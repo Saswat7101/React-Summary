@@ -5,19 +5,19 @@ function App() {
     <main>
       <Post
         title="React.js is Awesome"
-        content="React is a JavaScript library for building user interfaces. It allows developers to create reusable UI components and manage the state of their applications efficiently. With React, you can build complex and interactive web applications with ease."
+        content="React is awesome because it lets you build dynamic user interfaces efficiently using reusable components and simple state management."
       />
       <Post
-        title=""
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue."
+        title="Component-based architecture rocks"
+        content="React is awesome because it breaks the UI into reusable components which makes code cleaner, scalable, and easy to maintain."
       />
       <Post
-        title="Lorem ipsum dolor sit amet"
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue."
+        title="Fast and responsive apps with React"
+        content="React is awesome because its virtual DOM optimizes updates and makes applications faster and more responsive."
       />
       <Post
-        title="Lorem ipsum dolor sit amet"
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue."
+        title="Developer-friendly ecosystem"
+        content="React is awesome because it has a huge ecosystem, strong community support, and tons of libraries that speed up development."
       />
     </main>
   );
