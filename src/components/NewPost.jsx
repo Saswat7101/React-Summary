@@ -1,28 +1,45 @@
+import { useState } from "react";
 import classes from "./NewPost.module.css";
 
-export default function NewPost({
-  onBodyChange,
-  onAuthorChange,
-  onCancel,
-  onSubmit,
-}) {
+export default function NewPost({ onCancel }) {
+  const [enteredbody, setEnteredBody] = useState("");
+  const [enteredAuthor, setEnteredAuthor] = useState("");
+
+  function bodyChangeHandler(event) {
+    setEnteredBody(event.target.value);
+  }
+
+  function authorChangeHandler(event) {
+    setEnteredAuthor(event.target.value);
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+
+    const postData = {
+      body: enteredbody,
+      author: enteredAuthor,
+    };
+
+    console.log("New Post Submitted:", postData);
+    onCancel(); // Close the modal after submission
+  }
+
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <p>
         <label htmlFor="body">Text</label>
-        <textarea id="body" required rows={3} onChange={onBodyChange} />
+        <textarea id="body" required rows={3} onChange={bodyChangeHandler} />
       </p>
       <p>
         <label htmlFor="name">Your name</label>
-        <input type="text" id="name" required onChange={onAuthorChange} />
+        <input type="text" id="name" required onChange={authorChangeHandler} />
       </p>
       <p className={classes.actions}>
         <button type="button" onClick={onCancel}>
           Cancel
         </button>
-        <button type="submit" onClick={onSubmit}>
-          Add Post
-        </button>
+        <button type="submit">Add Post</button>
       </p>
     </form>
   );
