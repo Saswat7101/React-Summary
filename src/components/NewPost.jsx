@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classes from "./NewPost.module.css";
 
-export default function NewPost({ onCancel }) {
+export default function NewPost({ onCancel, onAddPost }) {
   const [enteredbody, setEnteredBody] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
 
@@ -22,6 +22,7 @@ export default function NewPost({ onCancel }) {
     };
 
     console.log("New Post Submitted:", postData);
+    onAddPost(postData); // Pass the new post data to the parent component
     onCancel(); // Close the modal after submission
   }
 
