@@ -39,3 +39,7 @@ yarn-error.log*
 # IDEs
 .vscode/settings.json
 .idea
+
+# backend specific
+backend/node_modules/
+backend/package-lock.json
