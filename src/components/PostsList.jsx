@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import NewPost from "./NewPost";
 import Post from "./Post";
 import classes from "./PostsList.module.css";
-import Modal from "./Modal";
 
-export default function PostsList({ isPosting, onStopPosting }) {
+export default function PostsList() {
   const [posts, setPosts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
@@ -34,12 +32,6 @@ export default function PostsList({ isPosting, onStopPosting }) {
   }
   return (
     <>
-      {isPosting && (
-        <Modal onClose={onStopPosting}>
-          <NewPost onCancel={onStopPosting} onAddPost={addPostHandler} />
-        </Modal>
-      )}
-
       {!isFetching && posts.length === 0 && (
         <div style={{ textAlign: "center", color: "white" }}>
           <h2>No posts yet!</h2>
