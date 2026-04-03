@@ -1,48 +1,18 @@
-import { useState } from "react";
 import classes from "./NewPost.module.css";
 import Modal from "../components/Modal";
-import { Link } from "react-router-dom";
+import { Link, Form, redirect } from "react-router-dom";
 
-export default function NewPost({ onAddPost }) {
-  const [enteredbody, setEnteredBody] = useState("");
-  const [enteredAuthor, setEnteredAuthor] = useState("");
-
-  function bodyChangeHandler(event) {
-    setEnteredBody(event.target.value);
-  }
-
-  function authorChangeHandler(event) {
-    setEnteredAuthor(event.target.value);
-  }
-
-  function submitHandler(event) {
-    event.preventDefault();
-
-    const postData = {
-      body: enteredbody,
-      author: enteredAuthor,
-    };
-
-    console.log("New Post Submitted:", postData);
-    onAddPost(postData); // Pass the new post data to the parent component
-    onCancel(); // Close the modal after submission
-  }
-
+export default function NewPost() {
   return (
     <Modal>
-      <form className={classes.form} onSubmit={submitHandler}>
+      <Form method="POST" className={classes.form}>
         <p>
           <label htmlFor="body">Text</label>
-          <textarea id="body" required rows={3} onChange={bodyChangeHandler} />
+          <textarea id="body" name="body" required rows={3} />
         </p>
         <p>
           <label htmlFor="name">Your name</label>
-          <input
-            type="text"
-            id="name"
-            required
-            onChange={authorChangeHandler}
-          />
+          <input type="text" id="name" name="author" required />
         </p>
         <p className={classes.actions}>
           <Link type="button" to="..">
@@ -50,7 +20,22 @@ export default function NewPost({ onAddPost }) {
           </Link>
           <button type="submit">Add Post</button>
         </p>
-      </form>
+      </Form>
     </Modal>
   );
+}
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const postData = Object.fromEntries(formData);
+
+  await fetch("http://localhost:8080/posts", {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return redirect("/");
 }
